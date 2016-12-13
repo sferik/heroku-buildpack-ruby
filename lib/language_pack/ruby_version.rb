@@ -40,7 +40,9 @@ module LanguagePack
 
     # https://github.com/bundler/bundler/issues/4621
     def version_for_download
-      if patchlevel_is_significant?
+      if rbx?
+        "rubinius-#{engine_version}"
+      elsif patchlevel_is_significant?
         @version
       else
         version_without_patchlevel
